@@ -7,7 +7,9 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.PowerManager;
+import android.os.SystemClock;
 import android.os.Vibrator;
+import android.view.WindowManager;
 
 import com.army.armyhongbao.Config;
 
@@ -98,7 +100,13 @@ public class NotifyHelper {
 
     /** 显示通知*/
     public static void showNotify(Context context, String title, PendingIntent pendingIntent) {
+        PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wakeLock = pm.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP|PowerManager.SCREEN_DIM_WAKE_LOCK, "WakeAndLock");
+        wakeLock.acquire();
 
+        send(pendingIntent);
+
+        wakeLock.release();
     }
 
     /** 执行PendingIntent事件*/
