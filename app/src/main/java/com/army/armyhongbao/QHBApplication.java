@@ -8,9 +8,23 @@ import android.content.Context;
  * Created by army-lev-ne on 16/1/16.
  */
 public class QHBApplication extends Application {
+
     @Override
     public void onCreate() {
         super.onCreate();
+    }
+
+    public static void showShare(final Activity activity) {
+
+    }
+
+    /** 显示分享*/
+    public static void showShare(final Activity activity, final String shareUrl) {
+    }
+
+    /** 检查更新*/
+    public static void checkUpdate(Activity activity) {
+
     }
 
     /** 首个activity启动调用*/
